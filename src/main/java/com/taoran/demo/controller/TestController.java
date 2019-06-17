@@ -7,6 +7,7 @@ import com.taoran.demo.utils.RSAUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +27,7 @@ public class TestController {
 
     @RequestMapping("/phoneLogin")
     @ResponseBody
-    public void test(HttpServletRequest request, HttpServletResponse response){
+    public void phoneLogin(HttpServletRequest request, HttpServletResponse response){
 
         Map<String, Object> map = null;
 
@@ -35,6 +36,27 @@ public class TestController {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("解密异常");
+        }
+
+        prinWriterUtils.outUserInfo(response,map);
+
+    }
+
+    @RequestMapping(value = "/phoneUserCK")
+    @ResponseBody
+    public void phoneUserCK(HttpServletRequest request,HttpServletResponse response){
+
+        Map<String,Object> map = null;
+
+        String userEntity = request.getParameter("userObj");
+
+        System.out.println(userEntity);
+
+        try{
+            map = userService.CkUser(request,response);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("uuid未传入");
         }
 
         prinWriterUtils.outUserInfo(response,map);

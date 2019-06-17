@@ -1,37 +1,20 @@
 package com.taoran.demo.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
 
-    private String username;
+    private String userName;
 
-    private String password;
+    private String userPasssord;
 
-    public String getUsername() {
-        return username;
-    }
+    private String userPhone;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private String userUuid;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public UserEntity(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }

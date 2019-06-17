@@ -12,4 +12,9 @@ public interface IUserService {
      */
     public Map<String,Object> getLogin(HttpServletRequest request, HttpServletResponse response)  throws Exception;
 
+
+    /**
+     * 校验用户是否存在
+     */
+    public Map<String,Object> CkUser(HttpServletRequest request,HttpServletResponse response) throws Exception;
 }

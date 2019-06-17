@@ -15,7 +15,7 @@ public class UserService implements IUserService {
     @Override
     public Map<String, Object> getLogin(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
-        HashMap<String, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<String,Object>();
         UserEntity userEntity = null;
 
         String username = request.getParameter("username");
@@ -27,6 +27,16 @@ public class UserService implements IUserService {
 
         map.put("RESULT",result);
         map.put("UserEntity",userEntity);
+
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> CkUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        HashMap<String,Object> map = new HashMap<String,Object>();
+
+        String userUuid = request.getParameter("userUuid");
 
         return map;
     }
