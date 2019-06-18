@@ -18,10 +18,11 @@ public class UserService implements IUserService {
         HashMap<String, Object> map = new HashMap<String,Object>();
         UserEntity userEntity = null;
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password")== "" ? "":new String(RSAUtils.decryptByPrivateKey(RSAUtils.decryptBASE64(request.getParameter("password")), RSAUtils.LOGIN_PRIVATE_KEY));
-        userEntity = new UserEntity(username,password);
+        String username = request.getParameter("userName");
+        String password = request.getParameter("userPassword")== "" ? "":new String(RSAUtils.decryptByPrivateKey(RSAUtils.decryptBASE64(request.getParameter("userPassword")), RSAUtils.LOGIN_PRIVATE_KEY));
 
+        //模拟登陆数据
+        userEntity = new UserEntity(username,password,"","");
 
         String result = userEntity == null?"ERROR":"SUCCESS";
 
@@ -32,12 +33,21 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Map<String, Object> CkUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public Map<String, Object> addUser(UserEntity userEntity) throws Exception {
 
         HashMap<String,Object> map = new HashMap<String,Object>();
 
-        String userUuid = request.getParameter("userUuid");
+        String userUuid = userEntity.getUserUuid();
 
+        String result = userEntity.getUserUuid().equals("") ? "ERROR":"SUCCESS";
+
+        map.put("result",result);
+
+        System.out.println(result);
+
+        if(result.equals("SUCCESS")){
+            map.put("userEntity",userEntity);
+        }
         return map;
     }
 }

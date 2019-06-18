@@ -1,5 +1,7 @@
 package com.taoran.demo.service;
 
+import com.taoran.demo.entity.UserEntity;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -16,5 +18,5 @@ public interface IUserService {
     /**
      * 校验用户是否存在
      */
-    public Map<String,Object> CkUser(HttpServletRequest request,HttpServletResponse response) throws Exception;
+    public Map<String,Object> addUser(UserEntity userEntity) throws Exception;
 }

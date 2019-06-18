@@ -1,5 +1,6 @@
 package com.taoran.demo.utils;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +16,7 @@ public class PrinWriterUtils {
 
             out = response.getWriter();
 
-            out.print(data);
-
+            out.print(JSON.toJSON(data));
 
         } catch (IOException e) {
             e.printStackTrace();

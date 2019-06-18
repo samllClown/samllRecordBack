@@ -4,17 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity {
+public class DailyRecord {
 
-    private String userName;
+    private String DRID;
 
-    private String userPassword;
+    private Date workTime;
 
-    private String userPhone;
+    private String workString;
 
-    private String userUuid;
 
 }

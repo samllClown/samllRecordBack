@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -44,21 +45,20 @@ public class TestController {
 
     @RequestMapping(value = "/phoneUserCK")
     @ResponseBody
-    public void phoneUserCK(HttpServletRequest request,HttpServletResponse response){
+    public void phoneUserCK(HttpServletRequest request,HttpServletResponse response,UserEntity userEntity){
 
-        Map<String,Object> map = null;
+        Map<String,Object> map = new HashMap<>();
 
-        String userEntity = request.getParameter("userObj");
-
-        System.out.println(userEntity);
+        Map<String,Object> userMap = null;
 
         try{
-            map = userService.CkUser(request,response);
+            userMap = userService.addUser(userEntity);
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("uuid未传入");
         }
 
+        map.putAll(userMap);
         prinWriterUtils.outUserInfo(response,map);
 
     }
