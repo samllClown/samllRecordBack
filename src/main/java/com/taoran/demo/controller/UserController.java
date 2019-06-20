@@ -18,7 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class TestController {
+@RequestMapping("/PhoneUser")
+public class UserController {
 
     @Autowired
     private PrinWriterUtils prinWriterUtils;

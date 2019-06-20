@@ -1,21 +1,30 @@
 package com.taoran.demo.entity;
 
+import com.alibaba.fastjson.JSONObject;
+import com.taoran.demo.utils.ListUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class DailyRecord {
 
-    private String DRID;
+    private List<ListUtils> dailyList;
 
-    private Date workTime;
+    private String uuid;
 
-    private String workString;
+    public DailyRecord(String jsonString){
 
+        JSONObject jsonObject = JSONObject.parseObject(jsonString);
+
+        this.uuid = jsonObject.getString("uuid");
+        this.dailyList = jsonObject.getJSONArray("dailyList").toJavaList(ListUtils.class);
+
+    }
 
 }
